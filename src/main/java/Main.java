@@ -14,8 +14,9 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         HttpClient client = HttpClient.newHttpClient();
+        String apiKey = "<your API KEY>";
 
-        HttpRequest request = HttpRequest.newBuilder(URI.create("https://imdb-api.com/en/API/Top250Movies/k_2pik6goe")) //substitua "<API KEY>" pela sua key do IMDB
+        HttpRequest request = HttpRequest.newBuilder(URI.create("https://imdb-api.com/en/API/Top250Movies/" + apiKey)) //substitua "<API KEY>" pela sua key do IMDB
                 .header("Accept", "application/json")
                 .timeout(Duration.ofSeconds(5))
                 .build();

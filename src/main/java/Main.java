@@ -18,6 +18,66 @@ public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
+        List<String> jsonMovies = new ImdbApiClient().callTop250Movies();
+        ArrayList<Movie> movies = new ImdbMovieJsonParser(jsonMovies).parse();
+        PrintWriter writer = new PrintWriter("content.html");
+        new HtmlGenerator(writer).generate(movies);
+        writer.close();
+
+    }
+
+}
+
+class Movie {
+
+    private String title;
+    private String image;
+    private String imDbRating;
+    private String year;
+
+    public Movie(String title, String image, String imDbRating, String year) {
+        this.title = title;
+        this.image = image;
+        this.imDbRating = imDbRating;
+        this.year = year;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImDbRating() {
+        return imDbRating;
+    }
+
+    public void setImDbRating(String imDbRating) {
+        this.imDbRating = imDbRating;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+}
+
+class ImdbApiClient {
+
+    public List<String> callTop250Movies() {
         HttpClient client = HttpClient.newHttpClient();
         String apiKey = "<your API KEY>";
 
@@ -26,17 +86,17 @@ public class Main {
                 .timeout(Duration.ofSeconds(10))
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = null;
+        try {
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            System.out.println("FALHA NA CHAMADA DA API. MESSAGE: "+ e.getMessage());
+        }
 
-        ArrayList<Movie> movies = convertJsonToMovie(response.body());
-
-        PrintWriter writer = new PrintWriter("content.html");
-        new HtmlGenerator(writer).generate(movies);
-        writer.close();
-
+        return splitMovies(response.body());
     }
 
-    private static List<String> splitMovies(String jsonMovies){
+    private List<String> splitMovies(String jsonMovies){
 
         Matcher matcher = Pattern.compile(".*\\[(.*)\\].*").matcher(jsonMovies);
 
@@ -53,15 +113,23 @@ public class Main {
         return Arrays.stream(arrayMovies).collect(Collectors.toList());
     }
 
-    private static ArrayList<Movie> convertJsonToMovie(String json){
+}
+
+class ImdbMovieJsonParser {
+
+    private List<String> json;
+
+    public ImdbMovieJsonParser(List<String> json){
+        this.json = json;
+    }
+
+    public ArrayList<Movie> parse(){
 
         Gson gson = new Gson().newBuilder().create();
 
-        List<String> jsonMovies = splitMovies(json);
-
         ArrayList<Movie> movies = new ArrayList<>();
 
-        jsonMovies.forEach(jsonMovie -> {
+        json.forEach(jsonMovie -> {
             jsonMovie = "{" + jsonMovie + "}";
             movies.add(gson.fromJson(jsonMovie, Movie.class));
         });

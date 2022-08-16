@@ -3,8 +3,7 @@ import br.com.sevendaysofcode.service.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -14,16 +13,24 @@ public class Main {
         marvelApiClient.getBody();
 
         List<String> jsonMovies = new ImdbApiClient().getBody();
-        ArrayList<Content> imdbMovies = new ImdbMovieJsonParser(jsonMovies).parse();
-        imdbMovies.forEach(System.out::println);
+        List<Content> imdbMovies = new ImdbMovieJsonParser(jsonMovies).parse();
 
         List<String> marvelSeries = new MarvelApiClient().getBody();
-        marvelSeries.forEach(System.out::println);
-        ArrayList<Content> series = new MarvelSerieJsonParser(marvelSeries).parse();
-        series.forEach(System.out::println);
-//        PrintWriter writer = new PrintWriter("content.html");
-//        new HtmlGenerator(writer).generate(movies);
-//        writer.close();
+        List<Content> series = new MarvelSerieJsonParser(marvelSeries).parse();
+
+        List<String> s = new ArrayList<>();
+
+        Collections.sort(imdbMovies);
+        Collections.sort(series);
+
+        PrintWriter writerImdb = new PrintWriter("imdb.html");
+        PrintWriter writerMarvel = new PrintWriter("marvel.html");
+
+        new HtmlGenerator(writerImdb).generate(imdbMovies);
+        new HtmlGenerator(writerMarvel).generate(series);
+
+        writerImdb.close();
+        writerMarvel.close();
     }
 
 }

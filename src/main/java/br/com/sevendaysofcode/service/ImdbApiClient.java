@@ -18,8 +18,13 @@ public class ImdbApiClient implements APIClient {
 
     @Override
     public List<String> getBody() {
+        return splitMovies(callImdbApi());
+    }
+
+    private String callImdbApi(){
+
         HttpClient client = HttpClient.newHttpClient();
-        String apiKey = "k_2pik6goe";
+        String apiKey = "<your API KEY from IMDb>";
 
         HttpRequest request = HttpRequest.newBuilder(URI.create("https://imdb-api.com/en/API/Top250Movies/" + apiKey))
                 .header("Accept", "application/json")
@@ -27,13 +32,15 @@ public class ImdbApiClient implements APIClient {
                 .build();
 
         HttpResponse<String> response = null;
+
         try {
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             System.out.println("FALHA NA CHAMADA DA API DA IMDB. MESSAGE: " + e.getMessage());
         }
 
-        return splitMovies(response.body());
+        return response.body();
+
     }
 
     private List<String> splitMovies(String jsonMovies){
@@ -44,13 +51,24 @@ public class ImdbApiClient implements APIClient {
             throw new IllegalArgumentException();
         }
 
-        String[] arrayMovies = matcher.group(1).split("},\\{");
-        arrayMovies[0] = arrayMovies[0].replace("{", "");
-        int lastPosition = arrayMovies.length - 1;
-        int lastChar = arrayMovies[lastPosition].length() - 1;
-        arrayMovies[lastPosition] = arrayMovies[lastPosition].substring(0, lastChar);
+        String[] arrayImdbMovies = matcher.group(1).split("},\\{");
+        arrayImdbMovies[0] = arrayImdbMovies[0].replace("{", "");
+        int lastPosition = arrayImdbMovies.length - 1;
+        int lastChar = arrayImdbMovies[lastPosition].length() - 1;
+        arrayImdbMovies[lastPosition] = arrayImdbMovies[lastPosition].substring(0, lastChar);
 
-        return Arrays.stream(arrayMovies).collect(Collectors.toList());
+        List<String> listImdbMovies = Arrays.stream(arrayImdbMovies).collect(Collectors.toList());
+
+        return formatterToJsonList(listImdbMovies);
+    }
+
+    private List<String> formatterToJsonList(List<String> listImdbMovies){
+
+        listImdbMovies.forEach(movie ->{
+            movie = "{" + movie + "}";
+        });
+
+        return listImdbMovies;
     }
 
 }

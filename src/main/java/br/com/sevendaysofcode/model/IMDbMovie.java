@@ -43,4 +43,9 @@ public class IMDbMovie implements Content{
     public String year() {
         return this.year;
     }
+
+    @Override
+    public int compareTo(Content content) {
+        return this.imDbRating.compareTo(content.rating());
+    }
 }

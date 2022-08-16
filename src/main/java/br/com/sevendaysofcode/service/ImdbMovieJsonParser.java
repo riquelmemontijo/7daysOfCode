@@ -2,12 +2,13 @@ package br.com.sevendaysofcode.service;
 
 import br.com.sevendaysofcode.model.Content;
 import br.com.sevendaysofcode.model.IMDbMovie;
+import br.com.sevendaysofcode.model.JsonParser;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImdbMovieJsonParser {
+public class ImdbMovieJsonParser implements JsonParser {
 
     private List<String> json;
 
@@ -15,18 +16,18 @@ public class ImdbMovieJsonParser {
         this.json = json;
     }
 
+    @Override
     public ArrayList<Content> parse(){
 
         Gson gson = new Gson().newBuilder().create();
 
-        ArrayList<Content> movies = new ArrayList<>();
+        ArrayList<Content> imdbMovies = new ArrayList<>();
 
         json.forEach(jsonMovie -> {
-            jsonMovie = "{" + jsonMovie + "}";
-            movies.add(gson.fromJson(jsonMovie, IMDbMovie.class));
+            imdbMovies.add(gson.fromJson(jsonMovie, IMDbMovie.class));
         });
 
-        return movies;
+        return imdbMovies;
     }
 
 }

@@ -1,8 +1,6 @@
 package br.com.sevendaysofcode.service;
 
 import br.com.sevendaysofcode.model.APIClient;
-import br.com.sevendaysofcode.model.MarvelSerie;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -63,17 +61,18 @@ public class MarvelApiClient implements APIClient {
         }
 
         String results = matcher.group(1);
-        String[] arraySeries = results.split("\\},\\{\"id\"");
-        arraySeries[0] = arraySeries[0].replace("\"id\"", "");
-        List<String> series = formattedToJsonList(Arrays.stream(arraySeries).collect(Collectors.toList()));
+        String[] arrayMarvelSeries = results.split("\\},\\{\"id\"");
+        arrayMarvelSeries[0] = arrayMarvelSeries[0].replace("\"id\"", "");
 
-        return series;
+        List<String> listMarvelSeries = Arrays.stream(arrayMarvelSeries).collect(Collectors.toList());
+
+        return formatterToJsonList(listMarvelSeries);
     }
 
-    private ArrayList<String> formattedToJsonList(List<String> series){
+    private ArrayList<String> formatterToJsonList(List<String> listMarvelSeries){
 
         ArrayList<String> jsonSeries = new ArrayList<>();
-        series.forEach(s -> {
+        listMarvelSeries.forEach(s -> {
             s = "{\"id\"" + s + "}";
             jsonSeries.add(s);
         });

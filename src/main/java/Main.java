@@ -9,25 +9,20 @@ public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        MarvelApiClient marvelApiClient = new MarvelApiClient();
-        marvelApiClient.getBody();
+        List<Content> imdbMovies = new ImdbMovieJsonParser(new ImdbApiClient().getBody()).parse();
 
-        List<String> jsonMovies = new ImdbApiClient().getBody();
-        List<Content> imdbMovies = new ImdbMovieJsonParser(jsonMovies).parse();
+        List<Content> marvelSeries = new MarvelSerieJsonParser(new MarvelApiClient().getBody()).parse();
 
-        List<String> marvelSeries = new MarvelApiClient().getBody();
-        List<Content> series = new MarvelSerieJsonParser(marvelSeries).parse();
-
-        List<String> s = new ArrayList<>();
+        imdbMovies.forEach(System.out::println);
 
         Collections.sort(imdbMovies);
-        Collections.sort(series);
+        Collections.sort(marvelSeries);
 
         PrintWriter writerImdb = new PrintWriter("imdb.html");
         PrintWriter writerMarvel = new PrintWriter("marvel.html");
 
         new HtmlGenerator(writerImdb).generate(imdbMovies);
-        new HtmlGenerator(writerMarvel).generate(series);
+        new HtmlGenerator(writerMarvel).generate(marvelSeries);
 
         writerImdb.close();
         writerMarvel.close();

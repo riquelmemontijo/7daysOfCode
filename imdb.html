@@ -4,9 +4,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
                     + "integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+         <style>
+            .grid{
+                 display: grid;
+                 grid: auto-flow / 100% 50%;
+                 grid-column-end: span 2;
+                 grid-row-end: span 2;
+                 grid-template-columns: repeat(5,1fr);
+                 grid-gap: 5px;
+             }
+         </style>
     </head>
-    <body>
+    <body class="grid">
 
 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
     <h4 class="card-header">Rocky</h4>
@@ -17,18 +26,18 @@
 </div>
 
 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-    <h4 class="card-header">Platoon</h4>
-    <div class="card-body">
-        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BMzRjZjdlMjQtODVkYS00N2YzLWJlYWYtMGVlN2E5MWEwMWQzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Platoon">
-        <p class="card-text mt-2">Nota: 8.0 - Ano: 1986</p>
-    </div>
-</div>
-
-<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
     <h4 class="card-header">Ford v Ferrari</h4>
     <div class="card-body">
         <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BM2UwMDVmMDItM2I2Yi00NGZmLTk4ZTUtY2JjNTQ3OGQ5ZjM2XkEyXkFqcGdeQXVyMTA1OTYzOTUx._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Ford v Ferrari">
         <p class="card-text mt-2">Nota: 8.0 - Ano: 2019</p>
+    </div>
+</div>
+
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <h4 class="card-header">Platoon</h4>
+    <div class="card-body">
+        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BMzRjZjdlMjQtODVkYS00N2YzLWJlYWYtMGVlN2E5MWEwMWQzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Platoon">
+        <p class="card-text mt-2">Nota: 8.0 - Ano: 1986</p>
     </div>
 </div>
 
@@ -273,14 +282,6 @@
 </div>
 
 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-    <h4 class="card-header">Jai Bhim</h4>
-    <div class="card-body">
-        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BOTM0NWFjNGYtNjExMS00ZTZlLWFiYmMtZmU4ZjZkMmMxZTNjXkEyXkFqcGdeQXVyODEyNjEwMDk@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Jai Bhim">
-        <p class="card-text mt-2">Nota: 8.0 - Ano: 2021</p>
-    </div>
-</div>
-
-<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
     <h4 class="card-header">Dersu Uzala</h4>
     <div class="card-body">
         <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BYWY0OWJlZTgtMWUzNy00MGJhLTk5YzQtNmY5MDEwOTIxNjMyXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Dersu Uzala">
@@ -293,6 +294,14 @@
     <div class="card-body">
         <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BNDJhYTk2MTctZmVmOS00OTViLTgxNjQtMzQxOTRiMDdmNGRjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="The Handmaiden">
         <p class="card-text mt-2">Nota: 8.0 - Ano: 2016</p>
+    </div>
+</div>
+
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <h4 class="card-header">Jai Bhim</h4>
+    <div class="card-body">
+        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BOTM0NWFjNGYtNjExMS00ZTZlLWFiYmMtZmU4ZjZkMmMxZTNjXkEyXkFqcGdeQXVyODEyNjEwMDk@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Jai Bhim">
+        <p class="card-text mt-2">Nota: 8.0 - Ano: 2021</p>
     </div>
 </div>
 
@@ -353,18 +362,18 @@
 </div>
 
 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-    <h4 class="card-header">Rashomon</h4>
-    <div class="card-body">
-        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BMjEzMzA4NDE2OF5BMl5BanBnXkFtZTcwNTc5MDI2NQ@@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Rashomon">
-        <p class="card-text mt-2">Nota: 8.1 - Ano: 1950</p>
-    </div>
-</div>
-
-<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
     <h4 class="card-header">The Great Escape</h4>
     <div class="card-body">
         <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BNzA2NmYxMWUtNzBlMC00MWM2LTkwNmQtYTFlZjQwODNhOWE0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="The Great Escape">
         <p class="card-text mt-2">Nota: 8.1 - Ano: 1963</p>
+    </div>
+</div>
+
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <h4 class="card-header">Rashomon</h4>
+    <div class="card-body">
+        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BMjEzMzA4NDE2OF5BMl5BanBnXkFtZTcwNTc5MDI2NQ@@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Rashomon">
+        <p class="card-text mt-2">Nota: 8.1 - Ano: 1950</p>
     </div>
 </div>
 
@@ -697,18 +706,18 @@
 </div>
 
 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-    <h4 class="card-header">The Wages of Fear</h4>
-    <div class="card-body">
-        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BZDdkNzMwZmUtY2Q5MS00ZmM2LWJhYjItYTBjMWY0MGM4MDRjXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="The Wages of Fear">
-        <p class="card-text mt-2">Nota: 8.1 - Ano: 1953</p>
-    </div>
-</div>
-
-<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
     <h4 class="card-header">Barry Lyndon</h4>
     <div class="card-body">
         <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BNmY0MWY2NDctZDdmMi00MjA1LTk0ZTQtZDMyZTQ1NTNlYzVjXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Barry Lyndon">
         <p class="card-text mt-2">Nota: 8.1 - Ano: 1975</p>
+    </div>
+</div>
+
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <h4 class="card-header">The Wages of Fear</h4>
+    <div class="card-body">
+        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BZDdkNzMwZmUtY2Q5MS00ZmM2LWJhYjItYTBjMWY0MGM4MDRjXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="The Wages of Fear">
+        <p class="card-text mt-2">Nota: 8.1 - Ano: 1953</p>
     </div>
 </div>
 
@@ -1449,18 +1458,18 @@
 </div>
 
 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-    <h4 class="card-header">Lawrence of Arabia</h4>
-    <div class="card-body">
-        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BYWY5ZjhjNGYtZmI2Ny00ODM0LWFkNzgtZmI1YzA2N2MxMzA0XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Lawrence of Arabia">
-        <p class="card-text mt-2">Nota: 8.3 - Ano: 1962</p>
-    </div>
-</div>
-
-<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
     <h4 class="card-header">Citizen Kane</h4>
     <div class="card-body">
         <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BYjBiOTYxZWItMzdiZi00NjlkLWIzZTYtYmFhZjhiMTljOTdkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Citizen Kane">
         <p class="card-text mt-2">Nota: 8.3 - Ano: 1941</p>
+    </div>
+</div>
+
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <h4 class="card-header">Lawrence of Arabia</h4>
+    <div class="card-body">
+        <img class="card-img" src="https://m.media-amazon.com/images/M/MV5BYWY5ZjhjNGYtZmI2Ny00ODM0LWFkNzgtZmI1YzA2N2MxMzA0XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_UX128_CR0,12,128,176_AL_.jpg" alt="Lawrence of Arabia">
+        <p class="card-text mt-2">Nota: 8.3 - Ano: 1962</p>
     </div>
 </div>
 

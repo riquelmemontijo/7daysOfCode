@@ -8,6 +8,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -24,7 +25,7 @@ public class ImdbApiClient implements APIClient {
     private String callImdbApi(){
 
         HttpClient client = HttpClient.newHttpClient();
-        String apiKey = "<your API KEY from IMDb>";
+        String apiKey = "k_2pik6goe";
 
         HttpRequest request = HttpRequest.newBuilder(URI.create("https://imdb-api.com/en/API/Top250Movies/" + apiKey))
                 .header("Accept", "application/json")
@@ -64,11 +65,14 @@ public class ImdbApiClient implements APIClient {
 
     private List<String> formatterToJsonList(List<String> listImdbMovies){
 
-        listImdbMovies.forEach(movie ->{
+        ArrayList<String> formattedJson = new ArrayList<>();
+
+        listImdbMovies.forEach(movie -> {
             movie = "{" + movie + "}";
+            formattedJson.add(movie);
         });
 
-        return listImdbMovies;
+        return formattedJson;
     }
 
 }

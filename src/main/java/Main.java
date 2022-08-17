@@ -13,8 +13,6 @@ public class Main {
 
         List<Content> marvelSeries = new MarvelSerieJsonParser(new MarvelApiClient().getBody()).parse();
 
-        imdbMovies.forEach(System.out::println);
-
         Collections.sort(imdbMovies);
         Collections.sort(marvelSeries);
 

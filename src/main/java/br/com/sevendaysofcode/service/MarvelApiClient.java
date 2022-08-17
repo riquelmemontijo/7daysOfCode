@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 
 public class MarvelApiClient implements APIClient {
 
-    private static final String apiPublicKey = "168b184b1e4271416639094ef8e1fe34";
-    private static final String apiPrivateKey = "c096f7395746c4ebfbb32df312de82a5f116d621";
+    private static final String apiPublicKey = "<your public marvel api key>";
+    private static final String apiPrivateKey = "yout private marvel api key";
 
     @Override
     public List<String> getBody() {

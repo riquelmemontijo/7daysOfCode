@@ -25,7 +25,7 @@ public class ImdbApiClient implements APIClient {
     private String callImdbApi(){
 
         HttpClient client = HttpClient.newHttpClient();
-        String apiKey = "k_2pik6goe";
+        String apiKey = "<your API KEY IMDb>";
 
         HttpRequest request = HttpRequest.newBuilder(URI.create("https://imdb-api.com/en/API/Top250Movies/" + apiKey))
                 .header("Accept", "application/json")

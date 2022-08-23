@@ -17,6 +17,6 @@
 + Private e Public Key da API da Marvel
 
 #### No código fonte da aplicação, especificamente nas classes ImdbApiClient(linha 28) e MarvelApiClient(linhas 24 e 25) estão os trechos que você deverá substituir pelas chaves das APIs
-#### Para conseguir a API da IMDb basta se cadastras no site da API em https://imdb-api.com/Identity/Account/Register
-#### Da mesma forma se consegue as chaves necessárias para conectar a API da Marvel, basta se registrar em https://www.marvel.com/signin?referer=https%3A%2F%2Fdeveloper.marvel.com%2F
+#### Para conseguir a chave da API da IMDb basta se cadastrar no site da API em https://imdb-api.com/Identity/Account/Register
+#### Da mesma forma se consegue as chaves para conectar a API da Marvel, basta se registrar em https://www.marvel.com/signin?referer=https%3A%2F%2Fdeveloper.marvel.com%2F
 #### Depois de substituir os trechos pelas suas chaves, o programa já poderá rodar. O resultado será a criação de duas páginas HTML na pasta "target". 
